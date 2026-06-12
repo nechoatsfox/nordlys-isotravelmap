@@ -113,39 +113,39 @@ window.NETWORK = {
 
     // Bergensbanen (Vy F4): Oslo–Bergen 6h31 total, 4–5 dep/day
     ["oslo", "drammen", "rail", 35, 210, "Bergensbanen"],
-    ["drammen", "honefoss", "rail", 55, 210, "Bergensbanen"],
-    ["honefoss", "nesbyen", "rail", 65, 210, "Bergensbanen"],
-    ["nesbyen", "gol", "rail", 18, 210, "Bergensbanen"],
-    ["gol", "al", "rail", 22, 210, "Bergensbanen"],
-    ["al", "geilo", "rail", 18, 210, "Bergensbanen"],
-    ["geilo", "finse", "rail", 45, 210, "Bergensbanen"],
-    ["finse", "myrdal", "rail", 25, 210, "Bergensbanen"],
-    ["myrdal", "voss", "rail", 45, 210, "Bergensbanen"],
-    ["voss", "bergen", "rail", 68, 210, "Bergensbanen"],
+    ["drammen", "honefoss", "rail", 53, 150, "Bergensbanen"],
+    ["honefoss", "nesbyen", "rail", 67, 150, "Bergensbanen"],
+    ["nesbyen", "gol", "rail", 11, 150, "Bergensbanen"],
+    ["gol", "al", "rail", 17, 120, "Bergensbanen"],
+    ["al", "geilo", "rail", 18, 120, "Bergensbanen"],
+    ["geilo", "finse", "rail", 36, 100, "Bergensbanen"],
+    ["finse", "myrdal", "rail", 26, 85, "Bergensbanen"],
+    ["myrdal", "voss", "rail", 42, 65, "Bergensbanen"],
+    ["voss", "bergen", "rail", 67, 50, "Bergensbanen"],
 
     // Vossebanen local (Vy R40, 19 dep/day)
-    ["voss", "dale", "rail", 28, 60, "R40 Vossebanen"],
-    ["dale", "bergen", "rail", 50, 60, "R40 Vossebanen"],
+    ["voss", "dale", "rail", 30, 60, "R40 Vossebanen"],
+    ["dale", "bergen", "rail", 41, 65, "R40 Vossebanen"],
 
     // Flåmsbana (Myrdal–Flåm, ~9 dep/day)
-    ["myrdal", "flam", "rail", 50, 110, "Flåmsbana"],
+    ["myrdal", "flam", "rail", 55, 75, "Flåmsbana"],
 
     // Sørlandsbanen / Sørtoget (Go-Ahead): Oslo–Kristiansand 4h26, –Stavanger 7h46
     ["oslo", "drammen", "rail", 35, 200, "Sørtoget"],
-    ["drammen", "kongsberg", "rail", 35, 200, "Sørtoget"],
-    ["kongsberg", "bo", "rail", 50, 200, "Sørtoget"],
-    ["bo", "drangedal", "rail", 25, 200, "Sørtoget"],
-    ["drangedal", "gjerstad", "rail", 25, 200, "Sørtoget"],
-    ["gjerstad", "nelaug", "rail", 25, 200, "Sørtoget"],
-    ["nelaug", "kristiansand", "rail", 70, 200, "Sørtoget"],
-    ["kristiansand", "moi", "rail", 100, 200, "Sørtoget"],
-    ["moi", "egersund", "rail", 35, 200, "Sørtoget"],
+    ["drammen", "kongsberg", "rail", 34, 40, "Sørtoget"],
+    ["kongsberg", "bo", "rail", 46, 125, "Sørtoget"],
+    ["bo", "drangedal", "rail", 28, 135, "Sørtoget"],
+    ["drangedal", "gjerstad", "rail", 24, 160, "Sørtoget"],
+    ["gjerstad", "nelaug", "rail", 30, 155, "Sørtoget"],
+    ["nelaug", "kristiansand", "rail", 57, 125, "Sørtoget"],
+    ["kristiansand", "moi", "rail", 84, 130, "Sørtoget"],
+    ["moi", "egersund", "rail", 34, 150, "Sørtoget"],
     ["egersund", "bryne", "rail", 35, 200, "Sørtoget"],
     ["bryne", "sandnes", "rail", 15, 200, "Sørtoget"],
     ["sandnes", "stavanger", "rail", 13, 200, "Sørtoget"],
 
     // Arendalsbanen (R50 shuttle timed with Sørtoget at Nelaug)
-    ["nelaug", "arendal", "rail", 37, 150, "Arendalsbanen"],
+    ["nelaug", "arendal", "rail", 37, 125, "Arendalsbanen"],
 
     // Jærbanen locals (Go-Ahead, 15–30 min headway)
     ["egersund", "bryne", "rail", 38, 40, "Jærbanen"],
@@ -153,32 +153,32 @@ window.NETWORK = {
     ["sandnes", "stavanger", "rail", 14, 25, "Jærbanen"],
 
     // Vestfoldbanen (Vy RE11, hourly; Oslo–Tønsberg 1h13)
-    ["oslo", "drammen", "rail", 35, 15, "RE11 Vestfoldbanen"],
-    ["drammen", "tonsberg", "rail", 40, 60, "RE11 Vestfoldbanen"],
+    ["oslo", "drammen", "rail", 33, 60, "RE11 Vestfoldbanen"],
+    ["drammen", "tonsberg", "rail", 36, 60, "RE11 Vestfoldbanen"],
     ["tonsberg", "torp", "rail", 15, 60, "RE11 Vestfoldbanen"],
-    ["torp", "sandefjord", "rail", 8, 60, "RE11 Vestfoldbanen"],
-    ["sandefjord", "larvik", "rail", 15, 60, "RE11 Vestfoldbanen"],
-    ["larvik", "porsgrunn", "rail", 25, 60, "RE11 Vestfoldbanen"],
-    ["porsgrunn", "skien", "rail", 10, 60, "RE11 Vestfoldbanen"],
+    ["torp", "sandefjord", "rail", 4, 60, "RE11 Vestfoldbanen"],
+    ["sandefjord", "larvik", "rail", 12, 55, "RE11 Vestfoldbanen"],
+    ["larvik", "porsgrunn", "rail", 11, 55, "RE11 Vestfoldbanen"],
+    ["porsgrunn", "skien", "rail", 8, 55, "RE11 Vestfoldbanen"],
 
     // Airport rail, Oslo (Flytoget every 10 min + Vy regionals)
     ["oslo", "osl_ap", "rail", 20, 10, "Flytoget"],
-    ["drammen", "oslo", "rail", 35, 20, "RE10/Flytoget"],
-    ["osl_ap", "eidsvoll", "rail", 12, 30, "RE10 Dovrebanen"],
-    ["oslo", "osl_ap", "rail", 24, 20, "RE10 Dovrebanen"],
-    ["eidsvoll", "hamar", "rail", 32, 60, "RE10 Dovrebanen"],
-    ["hamar", "lillehammer", "rail", 42, 60, "RE10 Dovrebanen"],
+    ["drammen", "oslo", "rail", 34, 60, "RE10/Flytoget"],
+    ["osl_ap", "eidsvoll", "rail", 8, 60, "RE10 Dovrebanen"],
+    ["oslo", "osl_ap", "rail", 23, 60, "RE10 Dovrebanen"],
+    ["eidsvoll", "hamar", "rail", 33, 55, "RE10 Dovrebanen"],
+    ["hamar", "lillehammer", "rail", 45, 60, "RE10 Dovrebanen"],
 
     // Østfoldbanen (RE20, ~half-hourly)
-    ["oslo", "moss", "rail", 32, 30, "RE20 Østfoldbanen"],
-    ["moss", "fredrikstad", "rail", 25, 30, "RE20 Østfoldbanen"],
-    ["fredrikstad", "sarpsborg", "rail", 12, 30, "RE20 Østfoldbanen"],
-    ["sarpsborg", "halden", "rail", 25, 30, "RE20 Østfoldbanen"],
+    ["oslo", "moss", "rail", 30, 60, "RE20 Østfoldbanen"],
+    ["moss", "fredrikstad", "rail", 24, 50, "RE20 Østfoldbanen"],
+    ["fredrikstad", "sarpsborg", "rail", 11, 50, "RE20 Østfoldbanen"],
+    ["sarpsborg", "halden", "rail", 18, 50, "RE20 Østfoldbanen"],
 
     // Gjøvikbanen, Kongsvingerbanen, Rørosbanen
-    ["oslo", "gjovik", "rail", 115, 120, "Gjøvikbanen"],
-    ["oslo", "kongsvinger", "rail", 70, 60, "Kongsvingerbanen"],
-    ["hamar", "elverum", "rail", 32, 120, "Rørosbanen"],
+    ["oslo", "gjovik", "rail", 123, 60, "Gjøvikbanen"],
+    ["oslo", "kongsvinger", "rail", 72, 40, "Kongsvingerbanen"],
+    ["hamar", "elverum", "rail", 24, 145, "Rørosbanen"],
 
     // Bybanen line 1, Bergen sentrum–Flesland (5–10 min headway, 44 min)
     ["bergen", "bgo_ap", "rail", 45, 8, "Bybanen 1"],
@@ -186,8 +186,8 @@ window.NETWORK = {
     /* ================= AIRPORT GROUND LINKS (bus / walk) ================= */
 
     ["bergen", "bgo_ap", "bus", 30, 30, "Flybussen Bergen"],
-    ["stavanger", "svg_ap", "bus", 28, 20, "Flybussen Stavanger"],
-    ["kristiansand", "krs_ap", "bus", 25, 40, "AKT 35 Kjevik"],
+    ["stavanger", "svg_ap", "bus", 31, 15, "Flybussen Stavanger"],
+    ["kristiansand", "krs_ap", "bus", 22, 50, "AKT 35 Kjevik"],
     ["haugesund", "hau_ap", "bus", 25, 80, "Flybussen Haugesund"],
     ["torp", "trf_ap", "walk", 12, 0, "Torp shuttle"],
 
@@ -204,9 +204,9 @@ window.NETWORK = {
     /* ================= EXPRESS COACHES ================= */
 
     // Kystbussen NW400 Bergen–Stavanger (4h20–5h25, up to 14/day, 2 ferries incl.)
-    ["bergen", "stord", "bus", 95, 75, "Kystbussen NW400"],
-    ["stord", "haugesund", "bus", 65, 75, "Kystbussen NW400"],
-    ["haugesund", "stavanger", "bus", 125, 75, "Kystbussen NW400"],
+    ["bergen", "stord", "bus", 115, 120, "Kystbussen NW400"],
+    ["stord", "haugesund", "bus", 65, 120, "Kystbussen NW400"],
+    ["haugesund", "stavanger", "bus", 125, 140, "Kystbussen NW400"],
 
     // Konkurrenten NW192 / Vy VY190 Oslo–Kristiansand (4h18–4h30, ~hourly daytime)
     ["oslo", "risor", "bus", 165, 60, "VY190/NW192 Sørlandsekspressen"],
@@ -220,26 +220,26 @@ window.NETWORK = {
     ["kristiansand", "mandal", "bus", 35, 150, "VY190 kyst"],
     ["mandal", "lyngdal", "bus", 30, 150, "VY190 kyst"],
     ["lyngdal", "flekkefjord", "bus", 30, 150, "VY190 kyst"],
-    ["flekkefjord", "sandnes", "bus", 110, 150, "VY190 kyst"],
+    ["flekkefjord", "sandnes", "bus", 96, 215, "VY190 kyst"],
     ["sandnes", "stavanger", "bus", 20, 150, "VY190 kyst"],
 
     // AKT 100 coastal locals Kristiansand–Arendal (every ~30 min)
-    ["kristiansand", "lillesand", "bus", 35, 30, "AKT 100"],
-    ["lillesand", "grimstad", "bus", 25, 30, "AKT 100"],
-    ["grimstad", "arendal", "bus", 30, 30, "AKT 100"],
+    ["kristiansand", "lillesand", "bus", 37, 30, "AKT 100"],
+    ["lillesand", "grimstad", "bus", 21, 30, "AKT 100"],
+    ["grimstad", "arendal", "bus", 25, 30, "AKT 100"],
 
     // Haukeliekspressen NW180 Oslo–Haugesund (~8h-8h30, few/day)
     ["oslo", "kongsberg", "bus", 90, 240, "Haukeliekspressen NW180"],
     ["kongsberg", "notodden", "bus", 40, 240, "Haukeliekspressen NW180"],
-    ["notodden", "seljord", "bus", 45, 240, "Haukeliekspressen NW180"],
+    ["notodden", "seljord", "bus", 40, 200, "Haukeliekspressen NW180"],
     ["seljord", "haukeligrend", "bus", 90, 240, "Haukeliekspressen NW180"],
     ["haukeligrend", "roldal", "bus", 55, 240, "Haukeliekspressen NW180"],
-    ["roldal", "etne", "bus", 90, 240, "Haukeliekspressen NW180"],
-    ["etne", "haugesund", "bus", 60, 240, "Haukeliekspressen NW180"],
-    ["roldal", "odda", "bus", 40, 240, "Skyss 930 (korr. Seljestad)"],
+    ["roldal", "etne", "bus", 78, 190, "Haukeliekspressen NW180"],
+    ["etne", "haugesund", "bus", 77, 185, "Haukeliekspressen NW180"],
+    ["roldal", "odda", "bus", 45, 280, "Skyss 930 (korr. Seljestad)"],
 
     // Vy VY1 Oslo–Notodden (2h10)
-    ["oslo", "notodden", "bus", 130, 90, "VY1"],
+    ["oslo", "notodden", "bus", 124, 75, "VY1"],
 
     // Valdresekspressen NW161 (Oslo–Fagernes ~3h, some continue to Sogn)
     ["oslo", "honefoss", "bus", 70, 120, "Valdresekspressen NW161"],
@@ -248,11 +248,11 @@ window.NETWORK = {
     ["laerdal", "sogndal", "bus", 55, 300, "Valdresekspressen NW161"],
 
     // Skyss Hardanger (Bergen–Norheimsund–Odda ~3h)
-    ["bergen", "norheimsund", "bus", 85, 90, "Skyss 925"],
-    ["norheimsund", "odda", "bus", 95, 180, "Skyss 930"],
+    ["bergen", "norheimsund", "bus", 80, 95, "Skyss 925"],
+    ["norheimsund", "odda", "bus", 77, 180, "Skyss 930"],
 
     // Skyss 600 Bergen–Os (frequent local)
-    ["bergen", "os", "bus", 40, 20, "Skyss 600"],
+    ["bergen", "os", "bus", 38, 10, "Skyss 600"],
 
     /* ================= ROADS (car; ferries baked in where noted) ========= */
 

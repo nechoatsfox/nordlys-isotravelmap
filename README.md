@@ -73,7 +73,12 @@ python3 -m http.server 8000     # any static server works
 ## Validation
 
 `node tools/validate.js` checks the model against 25 published journey-time
-anchors (and full network connectivity from all six origins):
+anchors (and full network connectivity from all seven origins).
+
+`python3 tools/calibrate_entur.py` refreshes the scheduled (rail/bus) edge
+durations and headways against Entur's live national journey planner —
+dry-run by default, `--write` to update `data/network.js`. The app itself
+stays fully static; calibration is an offline maintenance step.
 
 | Journey | Model | Published |
 |---|---|---|
@@ -138,4 +143,5 @@ data/network.js       researched transport graph  ← the data
 data/geo.js           Natural Earth geometry bundle
 tools/prepare_geo.py  rebuilds data/geo.js from Natural Earth GeoJSON
 tools/validate.js     checks the model against published times
+tools/calibrate_entur.py  refreshes rail/bus edges from Entur's live API
 ```

@@ -20,9 +20,9 @@ const fmt = m => isFinite(m) ? `${Math.floor(m / 60)}h${String(Math.round(m % 60
 const CASES = [
   ["oslo", "bergen", ["rail"], 391, 25, "Bergensbanen 6h31"],
   ["oslo", "kristiansand", ["rail"], 265, 20, "Sørtoget 4h26"],
-  ["oslo", "stavanger", ["rail"], 466, 30, "Sørtoget 7h46"],
+  ["oslo", "stavanger", ["rail"], 440, 30, "Sørtoget ~7h25 (2026 timetable)"],
   ["oslo", "tonsberg", ["rail"], 75, 12, "RE11 1h13"],
-  ["oslo", "skien", ["rail"], 143, 20, "RE11 ~2h20"],
+  ["oslo", "skien", ["rail"], 128, 20, "RE11 ~2h08 (via Eidangertunnelen)"],
   ["oslo", "arendal", ["rail"], 245, 35, "Sørtoget+Arendalsbanen ~4h"],
   ["oslo", "bergen", ["flight", "rail"], 210, 30, "fly: Flytoget+OSL proc+55m+Bybanen ~3h30"],
   ["oslo", "stavanger", ["flight", "rail", "bus"], 205, 30, "fly via Sola ~3h25"],
