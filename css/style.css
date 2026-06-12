@@ -1,0 +1,271 @@
+:root {
+  --bg: #070b1a;
+  --panel: rgba(13, 18, 38, 0.86);
+  --panel-edge: rgba(140, 170, 255, 0.14);
+  --ink: #e8ecf8;
+  --ink-dim: #93a0c4;
+  --ink-faint: #5a6688;
+  --accent: #7cffc4;
+  --accent2: #6aa6ff;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+#map {
+  position: fixed;
+  inset: 0;
+  display: block;
+  cursor: crosshair;
+}
+
+/* ---------- panel ---------- */
+
+#panel {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  width: 320px;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--panel-edge);
+  border-radius: 18px;
+  padding: 26px 24px 18px;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.55);
+  scrollbar-width: thin;
+  scrollbar-color: #2a3354 transparent;
+}
+
+#panel header { margin-bottom: 20px; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+h1 {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 300;
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  background: linear-gradient(100deg, #eaf2ff 20%, #7cffc4 65%, #6aa6ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.sub {
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: var(--ink-dim);
+}
+
+.block { margin-bottom: 18px; }
+
+.label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 9px;
+}
+
+.label .no {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: #424d70;
+  margin-left: 6px;
+}
+
+/* ---------- city chips ---------- */
+
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.chip {
+  font: 500 12.5px "Inter", sans-serif;
+  color: var(--ink-dim);
+  background: rgba(120, 150, 230, 0.07);
+  border: 1px solid rgba(120, 150, 230, 0.18);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.chip:hover { color: var(--ink); border-color: rgba(124, 255, 196, 0.4); }
+
+.chip.active {
+  color: #06251a;
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(124, 255, 196, 0.35);
+}
+
+/* ---------- mode toggles ---------- */
+
+.modes { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+
+.mode {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 11px;
+  border-radius: 11px;
+  border: 1px solid rgba(120, 150, 230, 0.16);
+  background: rgba(120, 150, 230, 0.05);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  user-select: none;
+}
+
+.mode .ic {
+  width: 26px; height: 26px;
+  display: grid; place-items: center;
+  border-radius: 8px;
+  background: rgba(120, 150, 230, 0.1);
+  transition: all 0.18s ease;
+}
+
+.mode .ic svg { width: 15px; height: 15px; stroke: var(--ink-dim); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; transition: stroke 0.18s; }
+
+.mode .tx { font-size: 12px; font-weight: 500; color: var(--ink-dim); }
+.mode .tx small { display: block; font-size: 10px; font-weight: 400; color: var(--ink-faint); font-style: italic; }
+
+.mode.on { border-color: rgba(124, 255, 196, 0.35); background: rgba(124, 255, 196, 0.06); }
+.mode.on .ic { background: rgba(124, 255, 196, 0.14); }
+.mode.on .ic svg { stroke: var(--accent); }
+.mode.on .tx { color: var(--ink); }
+
+.mode.off { opacity: 0.55; }
+
+/* ---------- legend ---------- */
+
+.legend canvas { width: 100%; height: 14px; border-radius: 7px; display: block; }
+
+.legend-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  color: var(--ink-faint);
+  margin-top: 5px;
+}
+
+/* ---------- readout ---------- */
+
+#readout {
+  min-height: 64px;
+  border-top: 1px solid rgba(120, 150, 230, 0.12);
+  padding-top: 14px;
+}
+
+.readout-idle { font-size: 11.5px; color: var(--ink-faint); line-height: 1.6; font-style: italic; }
+
+.route-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.route-dest { font-family: "Fraunces", serif; font-size: 17px; font-weight: 600; }
+
+.route-time {
+  font-family: var(--mono);
+  font-size: 15px;
+  color: var(--accent);
+}
+
+.leg {
+  display: flex;
+  gap: 10px;
+  padding: 4px 0 4px;
+  font-size: 11.5px;
+  color: var(--ink-dim);
+  border-left: 2px solid rgba(124, 255, 196, 0.25);
+  margin-left: 5px;
+  padding-left: 12px;
+  position: relative;
+}
+
+.leg::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 10px;
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.leg .lmode {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent2);
+  min-width: 44px;
+  padding-top: 2px;
+}
+
+.leg .ldesc { flex: 1; line-height: 1.45; }
+.leg .ltime { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); white-space: nowrap; padding-top: 1px; }
+
+/* ---------- footer ---------- */
+
+footer {
+  border-top: 1px solid rgba(120, 150, 230, 0.12);
+  padding-top: 12px;
+  margin-top: 4px;
+  font-size: 10.5px;
+  color: var(--ink-faint);
+}
+
+#statnote { font-family: var(--mono); font-size: 9.5px; display: block; margin-bottom: 8px; color: #424d70; }
+
+footer summary { cursor: pointer; color: var(--ink-dim); outline: none; }
+footer details p { margin-top: 8px; line-height: 1.6; }
+
+/* ---------- tooltip ---------- */
+
+#tooltip {
+  position: fixed;
+  pointer-events: none;
+  background: rgba(10, 14, 30, 0.92);
+  border: 1px solid rgba(124, 255, 196, 0.3);
+  border-radius: 10px;
+  padding: 7px 11px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  z-index: 10;
+  white-space: nowrap;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+}
+
+#tooltip .place { color: var(--ink-dim); font-size: 10px; display: block; }
+
+@media (max-width: 720px) {
+  #panel { left: 12px; right: 12px; top: auto; bottom: 12px; width: auto; max-height: 46vh; padding: 18px; }
+  h1 { font-size: 32px; }
+}
