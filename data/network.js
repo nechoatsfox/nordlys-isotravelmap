@@ -20,7 +20,7 @@
 window.NETWORK = {
 
   nodes: [
-    // ---- the six selectable origins ----
+    // ---- selectable origins (Haugesund lives in the Haugalandet block) ----
     { id: "oslo",         name: "Oslo",         lat: 59.913, lon: 10.752, kind: "city" },
     { id: "bergen",       name: "Bergen",       lat: 60.393, lon: 5.324,  kind: "city" },
     { id: "stavanger",    name: "Stavanger",    lat: 58.970, lon: 5.733,  kind: "city" },

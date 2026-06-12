@@ -2,7 +2,7 @@
 "use strict";
 
 (() => {
-  const ORIGINS = ["oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen"];
+  const ORIGINS = ["oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen", "haugesund"];
 
   const MODE_DEFS = [
     { id: "flight", name: "Fly", no: "flight", icon: '<svg viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5 6 .8 5-5.3a1.7 1.7 0 0 1 2.4 2.4l-5.3 5 .8 6L12 20l-2.5-7.5Z"/><path d="m4.5 19.5 3-3"/></svg>' },
@@ -13,6 +13,7 @@
 
   const state = {
     origin: "oslo",
+    dest: null,
     modes: new Set(["flight", "rail", "bus", "car"]),
     result: null,
   };
@@ -29,12 +30,40 @@
     b.textContent = node.name;
     b.onclick = () => {
       state.origin = id;
+      if (state.dest === id) state.dest = null;
       citiesEl.querySelectorAll(".chip").forEach(c => c.classList.remove("active"));
       b.classList.add("active");
+      syncDestChips();
       recompute();
     };
     citiesEl.appendChild(b);
   }
+
+  /* ---- panel: destination chips ---- */
+
+  const destsEl = document.getElementById("dests");
+  const destChips = new Map();
+  for (const id of ORIGINS) {
+    const node = window.NETWORK.nodes.find(n => n.id === id);
+    const b = document.createElement("button");
+    b.className = "chip";
+    b.textContent = node.name;
+    b.onclick = () => {
+      state.dest = state.dest === id ? null : id;
+      syncDestChips();
+      updateDestination();
+    };
+    destChips.set(id, b);
+    destsEl.appendChild(b);
+  }
+
+  function syncDestChips() {
+    for (const [id, b] of destChips) {
+      b.classList.toggle("active", id === state.dest);
+      b.classList.toggle("disabled", id === state.origin);
+    }
+  }
+  syncDestChips();
 
   /* ---- panel: mode toggles ---- */
 
@@ -142,7 +171,69 @@
     const reached = state.result.time.filter(t => isFinite(t)).length;
     document.getElementById("statnote").textContent =
       `${reached} places · ${Engine.edges.length} timetable segments · computed in ${ms} ms`;
-    clearReadout();
+    updateDestination();
+  }
+
+  /* ---- destination: quickest vs slowest route ---- */
+
+  function updateDestination() {
+    if (!state.dest || state.dest === state.origin) {
+      Renderer.setHighlight(null);
+      clearReadout();
+      return;
+    }
+    const di = Engine.nodeIdx(state.dest);
+    const destNode = Engine.nodes[di];
+
+    // candidates: the multimodal optimum, plus each ground mode on its own
+    // (flight alone can't reach an airport, so it only appears via the optimum)
+    const candidates = [];
+    if (isFinite(state.result.time[di])) {
+      candidates.push({ time: state.result.time[di], legs: Engine.routeTo(state.result, di) });
+    }
+    for (const m of state.modes) {
+      if (m === "flight") continue;
+      const r = Engine.shortestTimes(state.origin, new Set([m]));
+      if (isFinite(r.time[di])) {
+        candidates.push({ time: r.time[di], legs: Engine.routeTo(r, di) });
+      }
+    }
+
+    if (!candidates.length) {
+      Renderer.setHighlight({ dest: destNode });
+      readout.innerHTML = `<div class="readout-idle">${destNode.name} is not reachable with the selected modes.</div>`;
+      return;
+    }
+
+    candidates.sort((a, b) => a.time - b.time);
+    const fast = candidates[0];
+    const slow = candidates[candidates.length - 1];
+    const distinct = slow.time - fast.time > 1;
+
+    Renderer.setHighlight({
+      dest: destNode,
+      fast: highlightLegs(fast.legs),
+      slow: distinct ? highlightLegs(slow.legs) : null,
+    });
+
+    let html = `<div class="route-head"><span class="route-dest">→ ${destNode.name}</span></div>`;
+    html += routeGroup("Quickest", "raskest", fast, "fast");
+    if (distinct) html += routeGroup("Slowest", "tregest", slow, "slow");
+    readout.innerHTML = html;
+  }
+
+  function highlightLegs(legs) {
+    return legs.map(l => ({
+      mode: l.mode,
+      pts: l.path.map(i => [Engine.nodes[i].lat, Engine.nodes[i].lon]),
+    }));
+  }
+
+  function routeGroup(title, no, cand, cls) {
+    return `<div class="rg ${cls}"><div class="rg-head">` +
+      `<span class="rg-title">${title} <i>${no}</i></span>` +
+      `<span class="rg-time">${fmt(cand.time)}</span></div>` +
+      legsHtml(cand.legs) + `</div>`;
   }
 
   /* ---- hover / click readout ---- */
@@ -178,6 +269,22 @@
 
   const MODE_LABEL = { rail: "tog", bus: "buss", flight: "fly", car: "bil", walk: "gange" };
 
+  function legsHtml(legs) {
+    let html = "";
+    for (const l of legs) {
+      const from = Engine.nodes[l.from], to = Engine.nodes[l.to];
+      html += `<div class="leg"><span class="lmode">${MODE_LABEL[l.mode] || l.mode}</span>` +
+        `<span class="ldesc">${from.name} → ${to.name}` +
+        (l.mode === "car" || l.mode === "walk" ? "" : `<br><i style="opacity:.7">${l.line}</i>`) +
+        `</span><span class="ltime">${fmt(l.min)}</span></div>`;
+    }
+    if (legs.some(l => l.mode === "flight")) {
+      html += `<div class="leg"><span class="lmode">info</span>` +
+        `<span class="ldesc" style="opacity:.65">includes 70 min check-in, security &amp; exit</span></div>`;
+    }
+    return html;
+  }
+
   function showRoute(x, y) {
     const [lat, lon] = Renderer.unproject(x, y);
     const r = Engine.timeAt(state.result, state.modes, lat, lon);
@@ -189,21 +296,11 @@
     if (!legs.length) {
       html += `<div class="leg"><span class="lmode">start</span><span class="ldesc">You are here.</span></div>`;
     }
-    for (const l of legs) {
-      const from = Engine.nodes[l.from], to = Engine.nodes[l.to];
-      html += `<div class="leg"><span class="lmode">${MODE_LABEL[l.mode] || l.mode}</span>` +
-        `<span class="ldesc">${from.name} → ${to.name}` +
-        (l.mode === "car" || l.mode === "walk" ? "" : `<br><i style="opacity:.7">${l.line}</i>`) +
-        `</span><span class="ltime">${fmt(l.min)}</span></div>`;
-    }
+    html += legsHtml(legs);
     if (r.accessKm > 1) {
       html += `<div class="leg"><span class="lmode">${state.modes.has("car") ? "bil" : "gange"}</span>` +
         `<span class="ldesc">${near.name} → destination (~${r.accessKm.toFixed(0)} km local)</span>` +
         `<span class="ltime">${fmt(r.minutes - state.result.time[r.node])}</span></div>`;
-    }
-    if (legs.some(l => l.mode === "flight")) {
-      html += `<div class="leg"><span class="lmode">info</span>` +
-        `<span class="ldesc" style="opacity:.65">includes 70 min check-in, security &amp; exit</span></div>`;
     }
     readout.innerHTML = html;
   }

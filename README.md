@@ -4,8 +4,10 @@ A self-contained, dependency-free interactive map that answers one question:
 **how far can you get from a southern-Norwegian city, door to door, by every
 real means of travel?**
 
-Pick an origin — Oslo, Bergen, Stavanger, Kristiansand, Arendal or Drammen —
-and toggle flights, trains, coaches and driving. The map paints continuous
+Pick an origin — Oslo, Bergen, Stavanger, Kristiansand, Arendal, Drammen or
+Haugesund — and toggle flights, trains, coaches and driving. Optionally pick
+a destination city to see the quickest and the slowest sensible route
+highlighted on the map. The map paints continuous
 travel-time bands ("isochrones") over real geography, computed live from a
 hand-researched model of Norway's actual 2025–26 transport network.
 

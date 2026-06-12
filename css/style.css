@@ -120,6 +120,8 @@ h1 {
   box-shadow: 0 0 18px rgba(124, 255, 196, 0.35);
 }
 
+.chip.disabled { opacity: 0.3; pointer-events: none; }
+
 /* ---------- mode toggles ---------- */
 
 .modes { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
@@ -230,6 +232,39 @@ h1 {
 
 .leg .ldesc { flex: 1; line-height: 1.45; }
 .leg .ltime { font-family: var(--mono); font-size: 10.5px; color: var(--ink-faint); white-space: nowrap; padding-top: 1px; }
+
+/* ---------- quickest / slowest route groups ---------- */
+
+.rg { margin-bottom: 14px; }
+
+.rg-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.rg-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.rg-title i {
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-style: italic;
+  color: var(--ink-faint);
+  margin-left: 4px;
+}
+
+.rg-time { font-family: var(--mono); font-size: 13px; }
+
+.rg.fast .rg-title, .rg.fast .rg-time { color: var(--accent); }
+.rg.slow .rg-title, .rg.slow .rg-time { color: #ff8a7a; }
+.rg.slow .leg { border-left-color: rgba(255, 138, 122, 0.25); }
+.rg.slow .leg::before { border-color: #ff8a7a; }
 
 /* ---------- footer ---------- */
 

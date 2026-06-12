@@ -59,7 +59,7 @@ for (const [o, d, modes, exp, tol, label] of CASES) {
 }
 
 // connectivity: every node reachable with all modes from every origin city
-for (const o of ["oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen"]) {
+for (const o of ["oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen", "haugesund"]) {
   const res = Engine.shortestTimes(o, new Set(["rail", "bus", "flight", "car", "walk"]));
   const un = Engine.nodes.filter((n, i) => !isFinite(res.time[i])).map(n => n.id);
   if (un.length) { fail++; console.log(`✗ unreachable from ${o}: ${un.join(", ")}`); }

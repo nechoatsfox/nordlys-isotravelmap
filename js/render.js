@@ -95,6 +95,7 @@ const Renderer = (() => {
   let cities = [];           // big labels
   let places = [];           // minor labels
   let origin = null;         // {lat, lon, name}
+  let highlight = null;      // {dest, fast:[{mode,pts}], slow:[{mode,pts}]}
   let needsDraw = true;
   let pulseT = 0;
 
@@ -147,6 +148,7 @@ const Renderer = (() => {
   function setNetwork(layers) { networkLayers = layers; needsDraw = true; }
   function setLabels(majors, minors) { cities = majors; places = minors; needsDraw = true; }
   function setOrigin(o) { origin = o; needsDraw = true; }
+  function setHighlight(h) { highlight = h; needsDraw = true; }
 
   /* ---- drawing ----------------------------------------------------------- */
 
@@ -230,8 +232,70 @@ const Renderer = (() => {
     ctx.stroke(land);
 
     drawNetwork();
+    drawHighlight();
     drawLabels();
     drawOrigin();
+  }
+
+  const HL_FAST = "#7cffc4", HL_SLOW = "#ff8a7a";
+
+  function strokeRoute(route, color) {
+    ctx.save();
+    ctx.strokeStyle = color;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 9;
+    ctx.lineWidth = 2.4;
+    ctx.lineCap = "round";
+    ctx.lineJoin = "round";
+    ctx.globalAlpha = 0.9;
+    for (const leg of route) {
+      if (leg.mode === "flight") {
+        // same arc geometry as the faint network layer so they coincide
+        ctx.setLineDash([3, 6]);
+        for (let i = 0; i < leg.pts.length - 1; i++) {
+          const [ax, ay] = project(leg.pts[i][0], leg.pts[i][1]);
+          const [bx, by] = project(leg.pts[i + 1][0], leg.pts[i + 1][1]);
+          const mx = (ax + bx) / 2, my = (ay + by) / 2;
+          const dx = bx - ax, dy = by - ay;
+          const len = Math.hypot(dx, dy);
+          const cx = mx - dy / len * len * 0.18, cy = my + dx / len * len * 0.18;
+          ctx.beginPath();
+          ctx.moveTo(ax, ay);
+          ctx.quadraticCurveTo(cx, cy, bx, by);
+          ctx.stroke();
+        }
+        ctx.setLineDash([]);
+      } else {
+        ctx.beginPath();
+        for (let i = 0; i < leg.pts.length; i++) {
+          const [x, y] = project(leg.pts[i][0], leg.pts[i][1]);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
+  function drawHighlight() {
+    if (!highlight) return;
+    if (highlight.slow) strokeRoute(highlight.slow, HL_SLOW);
+    if (highlight.fast) strokeRoute(highlight.fast, HL_FAST);
+    if (highlight.dest) {
+      const [x, y] = project(highlight.dest.lat, highlight.dest.lon);
+      ctx.strokeStyle = "rgba(235,242,255,0.9)";
+      ctx.lineWidth = 1.6;
+      ctx.beginPath();
+      ctx.arc(x, y, 9, 0, 7);
+      ctx.stroke();
+      ctx.fillStyle = "#ebf2ff";
+      ctx.shadowColor = "#ebf2ff";
+      ctx.shadowBlur = 10;
+      ctx.beginPath();
+      ctx.arc(x, y, 3.5, 0, 7);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    }
   }
 
   function drawNetwork() {
@@ -366,7 +430,7 @@ const Renderer = (() => {
 
   return {
     GRID, setGeo, setField, setIsolines, setNetwork, setLabels, setOrigin,
-    project, unproject, canvas,
+    setHighlight, project, unproject, canvas,
     get view() { return view; },
   };
 })();

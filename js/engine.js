@@ -113,7 +113,8 @@ const Engine = (() => {
 
       for (const eid of adj[u]) {
         const e = edges[eid];
-        if (!modes.has(e.mode === "ferry" ? "car" : e.mode)) continue;
+        const m = e.mode === "ferry" ? "car" : e.mode;
+        if (m !== "walk" && !modes.has(m)) continue;
         // your car does not follow you onto a train/bus/plane
         if (e.mode === "car" && st.transit) continue;
         const v = e.a === u ? e.b : e.a;
@@ -171,14 +172,15 @@ const Engine = (() => {
       k = st.prevKey;
     }
     legs.reverse();
-    // merge consecutive legs on the same line / same road mode
+    // merge consecutive legs on the same line / same road mode, keeping the
+    // chain of intermediate nodes in `path` so the route can be drawn
     const merged = [];
     for (const l of legs) {
       const last = merged[merged.length - 1];
       if (last && last.line === l.line && last.mode === l.mode) {
-        last.to = l.to; last.min += l.min;
+        last.to = l.to; last.min += l.min; last.path.push(l.to);
       } else {
-        merged.push({ ...l });
+        merged.push({ ...l, path: [l.from, l.to] });
       }
     }
     return merged;
