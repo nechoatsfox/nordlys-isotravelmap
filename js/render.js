@@ -8,17 +8,17 @@
 
 const Renderer = (() => {
 
-  const COS = Math.cos(60.2 * Math.PI / 180);
+  const COS = Math.cos(64.5 * Math.PI / 180);
   const canvas = document.getElementById("map");
   const ctx = canvas.getContext("2d");
   let W = 0, H = 0, DPR = 1;
 
   // view: geographic center + pixels per degree latitude
-  const HOME = { lat: 59.85, lon: 8.05 };
+  const HOME = { lat: 64.5, lon: 17.5 };
   let view = { lat: HOME.lat, lon: HOME.lon, scale: 0 };
 
   // ---- geographic field grid (set by app) ----
-  const GRID = { w: 4.4, s: 57.55, e: 14.2, n: 62.9, step: 0.022 };
+  const GRID = { w: 4.0, s: 57.5, e: 31.5, n: 71.3, step: 0.04 };
   GRID.cols = Math.round((GRID.e - GRID.w) / GRID.step);
   GRID.rows = Math.round((GRID.n - GRID.s) / (GRID.step * 1 /* lat step = step */));
   GRID.toLatLon = (c, r) => [GRID.n - r * GRID.step, GRID.w + c * GRID.step / 1];
@@ -83,7 +83,7 @@ const Renderer = (() => {
     W = window.innerWidth; H = window.innerHeight;
     canvas.width = W * DPR; canvas.height = H * DPR;
     canvas.style.width = W + "px"; canvas.style.height = H + "px";
-    if (!view.scale) view.scale = Math.min(W / 9.2 / COS, H / 4.2);
+    if (!view.scale) view.scale = Math.min(W / 27.5 / COS, H / 13.8);
     needsDraw = true;
   }
 
@@ -164,12 +164,12 @@ const Renderer = (() => {
     ctx.strokeStyle = "rgba(120,150,230,0.055)";
     ctx.lineWidth = 1;
     ctx.beginPath();
-    for (let lon = 2; lon <= 16; lon++) {
-      const [x] = project(60, lon);
+    for (let lon = 4; lon <= 32; lon += 2) {
+      const [x] = project(65, lon);
       ctx.moveTo(x, 0); ctx.lineTo(x, H);
     }
-    for (let lat = 56; lat <= 64; lat++) {
-      const [, y] = project(lat, 8);
+    for (let lat = 57; lat <= 71; lat++) {
+      const [, y] = project(lat, 17);
       ctx.moveTo(0, y); ctx.lineTo(W, y);
     }
     ctx.stroke();
