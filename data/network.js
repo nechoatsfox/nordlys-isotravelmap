@@ -231,6 +231,36 @@ window.NETWORK = {
     // Bybanen line 1, Bergen sentrum–Flesland (5–10 min headway, 44 min)
     ["bergen", "bgo_ap", "rail", 45, 8, "Bybanen 1"],
 
+    /* ================= CENTRAL + NORTHERN RAIL ================= */
+
+    // Dovrebanen long-distance Vy (Oslo–Trondheim ~6h37)
+    // oslo→lillehammer covered by existing RE10 Dovrebanen edges
+    ["lillehammer", "dombas",    "rail",  85, 130, "Dovrebanen Vy"],
+    ["dombas",      "oppdal",    "rail",  62, 130, "Dovrebanen Vy"],
+    ["oppdal",      "trondheim", "rail", 118, 120, "Dovrebanen Vy"],
+
+    // Rørosbanen (Hamar–Trondheim via Røros, ~5h35, 2–3 dep/day)
+    ["hamar",  "tynset",    "rail",  97, 360, "Rørosbanen"],
+    ["tynset", "roros",     "rail",  52, 360, "Rørosbanen"],
+    ["roros",  "trondheim", "rail", 158, 360, "Rørosbanen"],
+
+    // Trønderbanen locals (Trondheim–Steinkjer, ~30 min headway)
+    ["trondheim", "hell",      "rail", 26, 30, "Trønderbanen"],
+    ["hell",      "steinkjer", "rail", 49, 35, "Trønderbanen"],
+
+    // Trondheim Lufthavn Værnes: Hell station is adjacent
+    ["hell", "trd_ap", "walk", 5, 0, "Værnes gangbro"],
+
+    // Raumabanen Vy (Dombås–Åndalsnes, 1h57, 4 dep/day)
+    ["dombas", "andalsnes", "rail", 117, 240, "Raumabanen Vy"],
+
+    // Nordlandsbanen Vy (Trondheim–Bodø, ~9h50, 2/day)
+    ["trondheim", "steinkjer",  "rail",  75, 270, "Nordlandsbanen Vy"],
+    ["steinkjer", "mosjoen",    "rail", 185, 390, "Nordlandsbanen Vy"],
+    ["mosjoen",   "mo_i_rana",  "rail",  82, 390, "Nordlandsbanen Vy"],
+    ["mo_i_rana", "fauske",     "rail", 140, 390, "Nordlandsbanen Vy"],
+    ["fauske",    "bodo",       "rail",  32, 360, "Nordlandsbanen Vy"],
+
     /* ================= AIRPORT GROUND LINKS (bus / walk) ================= */
 
     ["bergen", "bgo_ap", "bus", 30, 30, "Flybussen Bergen"],
@@ -238,6 +268,48 @@ window.NETWORK = {
     ["kristiansand", "krs_ap", "bus", 22, 50, "AKT 35 Kjevik"],
     ["haugesund", "hau_ap", "bus", 25, 80, "Flybussen Haugesund"],
     ["torp", "trf_ap", "walk", 12, 0, "Torp shuttle"],
+
+    // Trondheim Lufthavn Værnes (rail via hell→trd_ap walk above; also bus/car)
+    ["trondheim", "trd_ap", "bus", 35, 15, "Flybussen Trondheim"],
+    ["trondheim", "trd_ap", "car", 35,  0, "E14"],
+
+    // Ålesund Vigra
+    ["alesund", "aes_ap", "bus", 25, 30, "Flybussen Ålesund"],
+    ["alesund", "aes_ap", "car", 25,  0, "Fv60"],
+
+    // Molde
+    ["molde", "mol_ap", "bus", 12, 30, "Flybussen Molde"],
+    ["molde", "mol_ap", "car", 12,  0, "Fv62"],
+
+    // Bodø (airport is central)
+    ["bodo", "bod_ap", "bus",  8, 20, "Flybussen Bodø"],
+    ["bodo", "bod_ap", "car",  8,  0, "Sentrum"],
+
+    // Harstad/Narvik Evenes — distant from both cities
+    ["harstad", "evenes_ap", "bus",  65, 45, "Flybussen Harstad"],
+    ["narvik",  "evenes_ap", "bus",  85, 90, "Flybussen Narvik"],
+    ["harstad", "evenes_ap", "car",  65,  0, "E10"],
+    ["narvik",  "evenes_ap", "car",  75,  0, "E10"],
+
+    // Svolvær
+    ["svolvaer", "svj_ap", "bus",  5, 30, "Shuttle Svolvær"],
+    ["svolvaer", "svj_ap", "car",  5,  0, "Sentrum"],
+
+    // Tromsø (central airport)
+    ["tromso", "tos_ap", "bus", 10, 15, "Flybussen Tromsø"],
+    ["tromso", "tos_ap", "car",  8,  0, "Langnesveien"],
+
+    // Alta
+    ["alta", "alf_ap", "bus",  8, 20, "Flybussen Alta"],
+    ["alta", "alf_ap", "car",  8,  0, "E6"],
+
+    // Hammerfest
+    ["hammerfest", "hft_ap", "bus",  8, 30, "Flybussen Hammerfest"],
+    ["hammerfest", "hft_ap", "car",  8,  0, "E69"],
+
+    // Kirkenes
+    ["kirkenes", "kkn_ap", "bus", 10, 30, "Flybussen Kirkenes"],
+    ["kirkenes", "kkn_ap", "car", 10,  0, "E6"],
 
     /* ================= FLIGHTS (block times) ================= */
 
@@ -248,6 +320,44 @@ window.NETWORK = {
     ["bgo_ap", "svg_ap", "flight", 40, 70, "BGO–SVG (Widerøe/SAS)"],
     ["bgo_ap", "krs_ap", "flight", 55, 220, "BGO–KRS (Widerøe)"],
     ["trf_ap", "bgo_ap", "flight", 52, 400, "TRF–BGO (Widerøe)"],
+
+    // ===== FROM OSLO =====
+    ["osl_ap", "trd_ap",    "flight",  50,  60, "OSL–TRD (SAS/Norwegian)"],
+    ["osl_ap", "aes_ap",    "flight",  55,  90, "OSL–AES (SAS/Norwegian)"],
+    ["osl_ap", "mol_ap",    "flight",  55, 180, "OSL–MOL (Widerøe)"],
+    ["osl_ap", "bod_ap",    "flight",  90,  90, "OSL–BOO (Norwegian/SAS)"],
+    ["osl_ap", "tos_ap",    "flight", 100,  75, "OSL–TOS (SAS/Norwegian)"],
+    ["osl_ap", "evenes_ap", "flight",  95, 120, "OSL–EVE (SAS/Norwegian)"],
+    ["osl_ap", "alf_ap",    "flight", 125, 180, "OSL–ALF (SAS)"],
+    ["osl_ap", "hft_ap",    "flight", 130, 240, "OSL–HFT (Widerøe/SAS)"],
+    ["osl_ap", "kkn_ap",    "flight", 140, 120, "OSL–KKN (SAS/Norwegian)"],
+
+    // ===== FROM BERGEN =====
+    ["bgo_ap", "trd_ap", "flight",  55,  90, "BGO–TRD (SAS)"],
+    ["bgo_ap", "aes_ap", "flight",  40, 180, "BGO–AES (Widerøe)"],
+    ["bgo_ap", "bod_ap", "flight",  80, 180, "BGO–BOO (Norwegian)"],
+    ["bgo_ap", "tos_ap", "flight",  95, 240, "BGO–TOS (SAS)"],
+
+    // ===== FROM STAVANGER =====
+    ["svg_ap", "trd_ap", "flight",  55, 120, "SVG–TRD (SAS)"],
+    ["svg_ap", "bod_ap", "flight",  90, 240, "SVG–BOO (Widerøe)"],
+
+    // ===== INTRA-NORTH — Widerøe + SAS regional =====
+    ["trd_ap", "aes_ap",    "flight",  35,  90, "TRD–AES (Widerøe)"],
+    ["trd_ap", "mol_ap",    "flight",  35, 120, "TRD–MOL (Widerøe)"],
+    ["trd_ap", "bod_ap",    "flight",  55,  90, "TRD–BOO (Norwegian/SAS)"],
+    ["trd_ap", "tos_ap",    "flight",  80, 120, "TRD–TOS (Norwegian/SAS)"],
+    ["bod_ap", "tos_ap",    "flight",  40,  90, "BOO–TOS (Norwegian/SAS)"],
+    ["bod_ap", "evenes_ap", "flight",  35, 120, "BOO–EVE (Widerøe)"],
+    ["bod_ap", "svj_ap",    "flight",  25, 120, "BOO–SVJ (Widerøe)"],
+    ["evenes_ap", "tos_ap", "flight",  35,  90, "EVE–TOS (Widerøe)"],
+    ["evenes_ap", "svj_ap", "flight",  20, 120, "EVE–SVJ (Widerøe)"],
+    ["tos_ap", "svj_ap",    "flight",  35, 120, "TOS–SVJ (Widerøe)"],
+    ["tos_ap", "alf_ap",    "flight",  40,  90, "TOS–ALF (Widerøe/SAS)"],
+    ["tos_ap", "hft_ap",    "flight",  50, 120, "TOS–HFT (Widerøe)"],
+    ["tos_ap", "kkn_ap",    "flight",  45,  90, "TOS–KKN (Widerøe/SAS)"],
+    ["alf_ap", "hft_ap",    "flight",  30, 120, "ALF–HFT (Widerøe)"],
+    ["alf_ap", "kkn_ap",    "flight",  45, 120, "ALF–KKN (Widerøe)"],
 
     /* ================= EXPRESS COACHES ================= */
 
@@ -403,5 +513,69 @@ window.NETWORK = {
     ["oslo", "kongsvinger", "car", 80, 0, "Rv2"],
     ["kongsvinger", "elverum", "car", 75, 0, "Rv2/Rv20"],
     ["honefoss", "gjovik", "car", 100, 0, "Fv33"],
+
+    /* ================= ROADS — CENTRAL + NORTHERN NORWAY ================= */
+
+    // E6: Lillehammer → Trondheim
+    ["lillehammer", "dombas",    "car",  88, 0, "E6"],
+    ["dombas",      "oppdal",    "car",  57, 0, "E6"],
+    ["oppdal",      "trondheim", "car",  90, 0, "E6"],
+
+    // E6/E14: Trondheim area
+    ["trondheim", "hell",      "car", 30, 0, "E14"],
+    ["trondheim", "steinkjer", "car", 75, 0, "E6"],
+    ["steinkjer", "namsos",    "car", 65, 0, "E6/Rv17"],
+
+    // E6: Trondheim → Bodø → Narvik
+    ["steinkjer",  "mosjoen",   "car", 195, 0, "E6"],
+    ["mosjoen",    "mo_i_rana", "car",  90, 0, "E6"],
+    ["mo_i_rana",  "fauske",    "car", 140, 0, "E6"],
+    ["fauske",     "bodo",      "car",  35, 0, "E6"],
+    ["fauske",     "narvik",    "car", 165, 0, "E6"],
+
+    // E6/E10/Rv83: northern Norway
+    ["narvik",   "harstad",  "car", 100, 0, "E10/Rv83 + Rombaksbrua"],
+    ["narvik",   "svolvaer", "car", 155, 0, "E10 Lofotentunnelen"],
+    ["narvik",   "tromso",   "car", 265, 0, "E6/E8"],
+    ["harstad",  "finnsnes", "car",  75, 0, "E10/Rv83"],
+    ["harstad",  "tromso",   "car", 165, 0, "E10/Rv83/E8"],
+    ["finnsnes", "tromso",   "car",  95, 0, "E8"],
+    ["tromso",   "alta",     "car", 400, 0, "E6/E8"],
+    ["alta",     "hammerfest","car", 160, 0, "E69/E6"],
+    ["alta",     "kirkenes", "car", 390, 0, "E6"],
+
+    // Rv17 Kystriksveien (coastal Nordland)
+    ["mosjoen",      "bronnoysund",  "car", 155, 0, "Rv17 Kystriksveien"],
+    ["bronnoysund",  "sandnessjoen", "car",  85, 0, "Rv17"],
+    ["sandnessjoen", "mo_i_rana",    "car",  80, 0, "Rv17/E6"],
+
+    // E136 / E39: Åndalsnes – Molde – Ålesund – Trondheim
+    ["andalsnes",      "dombas",         "car", 115, 0, "Rv15"],
+    ["andalsnes",      "molde",          "car",  75, 0, "E136/E39"],
+    ["andalsnes",      "alesund",        "car", 100, 0, "E136/E39"],
+    ["molde",          "alesund",        "car",  80, 0, "E39 Atlanterhavstunnelen"],
+    ["molde",          "kristiansund_n", "car",  80, 0, "E39 Fannefjordtunnelen"],
+    ["kristiansund_n", "trondheim",      "car", 185, 0, "E39"],
+    ["molde",          "trondheim",      "car", 200, 0, "E39"],
+
+    /* ================= EXPRESS COACHES — CENTRAL + NORTHERN ================= */
+
+    // Lavprisekspressen NW100 Oslo–Trondheim (~6h30)
+    ["oslo",        "hamar",       "bus", 128, 90,  "Lavprisekspressen NW100"],
+    ["hamar",       "lillehammer", "bus",  47, 90,  "Lavprisekspressen NW100"],
+    ["lillehammer", "oppdal",      "bus", 120, 120, "Lavprisekspressen NW100"],
+    ["oppdal",      "trondheim",   "bus", 130, 90,  "Lavprisekspressen NW100"],
+
+    // Trondheim–Ålesund express (~4h30)
+    ["trondheim", "andalsnes", "bus", 195, 180, "Nettbuss/Tide Trondheim–Ålesund"],
+    ["andalsnes", "alesund",   "bus", 100, 120, "Nettbuss/Tide E136–E39"],
+
+    // Northern Norway (where no rail exists north of Bodø)
+    ["tromso",   "finnsnes",   "bus", 100, 180, "Troms fylkestrafikk 300"],
+    ["finnsnes", "harstad",    "bus",  90, 180, "Troms fylkestrafikk 300"],
+    ["narvik",   "harstad",    "bus", 150, 180, "Nor-Way / lokalt"],
+    ["tromso",   "alta",       "bus", 380, 240, "Lavprisekspressen NW50"],
+    ["alta",     "hammerfest", "bus", 165, 180, "FFR / Boreal"],
+    ["alta",     "kirkenes",   "bus", 420, 300, "Nor-Way NW50 Finnmark"],
   ],
 };
