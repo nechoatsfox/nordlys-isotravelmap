@@ -106,6 +106,54 @@ window.NETWORK = {
     { id: "gjovik",      name: "Gjøvik",      lat: 60.796, lon: 10.692, kind: "town" },
     { id: "elverum",     name: "Elverum",     lat: 60.882, lon: 11.563, kind: "town" },
     { id: "kongsvinger", name: "Kongsvinger", lat: 60.191, lon: 12.001, kind: "town" },
+
+    // ---- Central Norway: Innlandet north / Dovrebanen ----
+    { id: "dombas",    name: "Dombås",    lat: 62.073, lon: 9.124,  kind: "town" },
+    { id: "oppdal",   name: "Oppdal",    lat: 62.593, lon: 9.691,  kind: "town" },
+    { id: "roros",    name: "Røros",     lat: 62.574, lon: 11.386, kind: "town" },
+    { id: "tynset",   name: "Tynset",    lat: 62.278, lon: 10.776, kind: "town" },
+
+    // ---- Trøndelag ----
+    { id: "trondheim",  name: "Trondheim",          lat: 63.430, lon: 10.395, kind: "city" },
+    { id: "hell",       name: "Hell",               lat: 63.445, lon: 10.877, kind: "station" },
+    { id: "steinkjer",  name: "Steinkjer",           lat: 64.014, lon: 11.496, kind: "town" },
+    { id: "namsos",     name: "Namsos",             lat: 64.467, lon: 11.497, kind: "town" },
+    { id: "trd_ap",     name: "Trondheim lufthavn", lat: 63.457, lon: 10.924, kind: "airport" },
+
+    // ---- Møre og Romsdal ----
+    { id: "andalsnes",     name: "Åndalsnes",     lat: 62.563, lon: 7.689,  kind: "town" },
+    { id: "molde",         name: "Molde",         lat: 62.739, lon: 7.159,  kind: "city" },
+    { id: "alesund",       name: "Ålesund",       lat: 62.472, lon: 6.155,  kind: "city" },
+    { id: "kristiansund_n", name: "Kristiansund", lat: 63.110, lon: 7.728,  kind: "town" },
+    { id: "aes_ap",        name: "Vigra",         lat: 62.560, lon: 6.110,  kind: "airport" },
+    { id: "mol_ap",        name: "Molde lufthavn",lat: 62.745, lon: 7.262,  kind: "airport" },
+
+    // ---- Nordland ----
+    { id: "bronnoysund",  name: "Brønnøysund",  lat: 65.474, lon: 12.214, kind: "town" },
+    { id: "mosjoen",      name: "Mosjøen",      lat: 65.835, lon: 13.189, kind: "town" },
+    { id: "sandnessjoen", name: "Sandnessjøen", lat: 66.011, lon: 12.633, kind: "town" },
+    { id: "mo_i_rana",    name: "Mo i Rana",    lat: 66.313, lon: 14.142, kind: "town" },
+    { id: "fauske",       name: "Fauske",       lat: 67.259, lon: 15.393, kind: "town" },
+    { id: "bodo",         name: "Bodø",         lat: 67.282, lon: 14.404, kind: "city" },
+    { id: "svolvaer",     name: "Svolvær",      lat: 68.234, lon: 14.566, kind: "town" },
+    { id: "narvik",       name: "Narvik",       lat: 68.438, lon: 17.427, kind: "town" },
+    { id: "bod_ap",       name: "Bodø lufthavn",    lat: 67.268, lon: 14.365, kind: "airport" },
+    { id: "evenes_ap",    name: "Evenes",           lat: 68.491, lon: 16.678, kind: "airport" },
+    { id: "svj_ap",       name: "Svolvær lufthavn", lat: 68.243, lon: 14.669, kind: "airport" },
+
+    // ---- Troms ----
+    { id: "harstad",  name: "Harstad",         lat: 68.798, lon: 16.541, kind: "town" },
+    { id: "finnsnes", name: "Finnsnes",         lat: 69.231, lon: 17.977, kind: "town" },
+    { id: "tromso",   name: "Tromsø",           lat: 69.650, lon: 18.956, kind: "city" },
+    { id: "tos_ap",   name: "Tromsø lufthavn",  lat: 69.683, lon: 18.919, kind: "airport" },
+
+    // ---- Finnmark ----
+    { id: "alta",       name: "Alta",                   lat: 69.969, lon: 23.271, kind: "town" },
+    { id: "hammerfest", name: "Hammerfest",             lat: 70.663, lon: 23.683, kind: "town" },
+    { id: "kirkenes",   name: "Kirkenes",               lat: 69.726, lon: 30.044, kind: "town" },
+    { id: "alf_ap",     name: "Alta lufthavn",          lat: 69.977, lon: 23.371, kind: "airport" },
+    { id: "hft_ap",     name: "Hammerfest lufthavn",    lat: 70.680, lon: 23.669, kind: "airport" },
+    { id: "kkn_ap",     name: "Kirkenes lufthavn",      lat: 69.726, lon: 29.891, kind: "airport" },
   ],
 
   edges: [
