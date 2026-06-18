@@ -2,7 +2,11 @@
 "use strict";
 
 (() => {
-  const ORIGINS = ["oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen", "haugesund"];
+  const ORIGINS = [
+    "oslo", "bergen", "stavanger", "kristiansand", "arendal",
+    "drammen", "haugesund", "trondheim", "tromso", "alesund",
+    "bodo", "fredrikstad", "skien", "tonsberg", "lillehammer",
+  ];
 
   const MODE_DEFS = [
     { id: "flight", name: "Fly", no: "flight", icon: '<svg viewBox="0 0 24 24"><path d="M10.5 13.5 3 11l1.5-1.5 6 .8 5-5.3a1.7 1.7 0 0 1 2.4 2.4l-5.3 5 .8 6L12 20l-2.5-7.5Z"/><path d="m4.5 19.5 3-3"/></svg>' },

@@ -42,6 +42,14 @@ const CASES = [
   ["oslo", "geilo", ["car"], 190, 25, "Rv7 ~3h15"],
   ["drammen", "bergen", ["rail"], 356, 30, "Bergensbanen from Drammen"],
   ["arendal", "bergen", ["flight", "rail", "bus"], 280, 60, "bus to KRS + Widerøe BGO-KRS"],
+  // Northern Norway
+  ["oslo", "trondheim", ["rail"], 397, 45, "Dovrebanen ~6h37"],
+  ["oslo", "trondheim", ["car"], 485, 45, "E6 ~8h05"],
+  ["oslo", "trondheim", ["flight", "rail", "bus"], 230, 35, "fly OSL–TRD ~3h50"],
+  ["oslo", "bodo",      ["flight", "rail", "bus"], 290, 35, "fly OSL–BOO ~4h50"],
+  ["oslo", "tromso",    ["flight", "rail", "bus"], 300, 35, "fly OSL–TOS ~5h"],
+  ["trondheim", "bodo", ["rail"], 596, 55, "Nordlandsbanen ~9h56"],
+  ["trondheim", "alesund", ["car"], 225, 30, "E39 via Molde ~3h45"],
 ];
 
 let fail = 0;
@@ -59,7 +67,10 @@ for (const [o, d, modes, exp, tol, label] of CASES) {
 }
 
 // connectivity: every node reachable with all modes from every origin city
-for (const o of ["oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen", "haugesund"]) {
+for (const o of [
+  "oslo", "bergen", "stavanger", "kristiansand", "arendal", "drammen", "haugesund",
+  "trondheim", "tromso", "alesund", "bodo", "fredrikstad", "skien", "tonsberg", "lillehammer",
+]) {
   const res = Engine.shortestTimes(o, new Set(["rail", "bus", "flight", "car", "walk"]));
   const un = Engine.nodes.filter((n, i) => !isFinite(res.time[i])).map(n => n.id);
   if (un.length) { fail++; console.log(`✗ unreachable from ${o}: ${un.join(", ")}`); }
