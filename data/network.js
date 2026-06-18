@@ -235,31 +235,32 @@ window.NETWORK = {
 
     // Dovrebanen long-distance Vy (Oslo–Trondheim ~6h37)
     // oslo→lillehammer covered by existing RE10 Dovrebanen edges
-    ["lillehammer", "dombas",    "rail",  85, 130, "Dovrebanen Vy"],
-    ["dombas",      "oppdal",    "rail",  62, 130, "Dovrebanen Vy"],
-    ["oppdal",      "trondheim", "rail", 118, 120, "Dovrebanen Vy"],
+    ["lillehammer", "dombas",    "rail", 109, 480, "Dovrebanen"],
+    ["dombas",      "oppdal",    "rail",  56, 150, "Dovrebanen"],
+    // oppdal→trondheim: no direct service in Entur; use road+bus proxy time
+    ["oppdal",      "trondheim", "rail", 115, 180, "Dovrebanen Vy"],
 
     // Rørosbanen (Hamar–Trondheim via Røros, ~5h35, 2–3 dep/day)
-    ["hamar",  "tynset",    "rail",  97, 360, "Rørosbanen"],
-    ["tynset", "roros",     "rail",  52, 360, "Rørosbanen"],
-    ["roros",  "trondheim", "rail", 158, 360, "Rørosbanen"],
+    ["hamar",  "tynset",    "rail", 166, 240, "Rørosbanen"],
+    ["tynset", "roros",     "rail",  39, 240, "Rørosbanen"],
+    ["roros",  "trondheim", "rail", 155, 240, "Rørosbanen"],
 
-    // Trønderbanen locals (Trondheim–Steinkjer, ~30 min headway)
-    ["trondheim", "hell",      "rail", 26, 30, "Trønderbanen"],
-    ["hell",      "steinkjer", "rail", 49, 35, "Trønderbanen"],
+    // Trønderbanen locals (Trondheim–Hell–Steinkjer)
+    ["trondheim", "hell",      "rail",  34,  95, "Trønderbanen"],
+    ["hell",      "steinkjer", "rail",  91,  80, "Trønderbanen"],
 
     // Trondheim Lufthavn Værnes: Hell station is adjacent
     ["hell", "trd_ap", "walk", 5, 0, "Værnes gangbro"],
 
-    // Raumabanen Vy (Dombås–Åndalsnes, 1h57, 4 dep/day)
-    ["dombas", "andalsnes", "rail", 117, 240, "Raumabanen Vy"],
+    // Raumabanen Vy (Dombås–Åndalsnes, ~1h22, 4 dep/day)
+    ["dombas", "andalsnes", "rail", 82, 160, "Raumabanen"],
 
     // Nordlandsbanen Vy (Trondheim–Bodø, ~9h50, 2/day)
-    ["trondheim", "steinkjer",  "rail",  75, 270, "Nordlandsbanen Vy"],
-    ["steinkjer", "mosjoen",    "rail", 185, 390, "Nordlandsbanen Vy"],
-    ["mosjoen",   "mo_i_rana",  "rail",  82, 390, "Nordlandsbanen Vy"],
-    ["mo_i_rana", "fauske",     "rail", 140, 390, "Nordlandsbanen Vy"],
-    ["fauske",    "bodo",       "rail",  32, 360, "Nordlandsbanen Vy"],
+    ["trondheim", "steinkjer",  "rail", 126, 105, "Trønderbanen"],
+    ["steinkjer", "mosjoen",    "rail", 200, 480, "Nordlandsbanen"],
+    ["mosjoen",   "mo_i_rana",  "rail",  64, 450, "Nordlandsbanen"],
+    ["mo_i_rana", "fauske",     "rail", 131, 395, "Nordlandsbanen"],
+    ["fauske",    "bodo",       "rail",  40, 175, "Saltenpendelen"],
 
     /* ================= AIRPORT GROUND LINKS (bus / walk) ================= */
 
@@ -517,9 +518,9 @@ window.NETWORK = {
     /* ================= ROADS — CENTRAL + NORTHERN NORWAY ================= */
 
     // E6: Lillehammer → Trondheim
-    ["lillehammer", "dombas",    "car",  88, 0, "E6"],
-    ["dombas",      "oppdal",    "car",  57, 0, "E6"],
-    ["oppdal",      "trondheim", "car",  90, 0, "E6"],
+    ["lillehammer", "dombas",    "car",  105, 0, "E6"],
+    ["dombas",      "oppdal",    "car",   55, 0, "E6"],
+    ["oppdal",      "trondheim", "car",  100, 0, "E6"],
 
     // E6/E14: Trondheim area
     ["trondheim", "hell",      "car", 30, 0, "E14"],
@@ -561,8 +562,8 @@ window.NETWORK = {
     /* ================= EXPRESS COACHES — CENTRAL + NORTHERN ================= */
 
     // Lavprisekspressen NW100 Oslo–Trondheim (~6h30)
-    ["oslo",        "hamar",       "bus", 128, 90,  "Lavprisekspressen NW100"],
-    ["hamar",       "lillehammer", "bus",  47, 90,  "Lavprisekspressen NW100"],
+    ["oslo",        "hamar",       "bus", 106, 90,  "Lavprisekspressen NW100"],
+    ["hamar",       "lillehammer", "bus",  50, 90,  "Lavprisekspressen NW100"],
     ["lillehammer", "oppdal",      "bus", 120, 120, "Lavprisekspressen NW100"],
     ["oppdal",      "trondheim",   "bus", 130, 90,  "Lavprisekspressen NW100"],
 
@@ -575,7 +576,7 @@ window.NETWORK = {
     ["finnsnes", "harstad",    "bus",  90, 180, "Troms fylkestrafikk 300"],
     ["narvik",   "harstad",    "bus", 150, 180, "Nor-Way / lokalt"],
     ["tromso",   "alta",       "bus", 380, 240, "Lavprisekspressen NW50"],
-    ["alta",     "hammerfest", "bus", 165, 180, "FFR / Boreal"],
+    ["alta",     "hammerfest", "bus", 143, 180, "Alta - Hammerfest"],
     ["alta",     "kirkenes",   "bus", 420, 300, "Nor-Way NW50 Finnmark"],
   ],
 };
