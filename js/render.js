@@ -120,7 +120,12 @@ const Renderer = (() => {
 
   function setGeo(geo) {
     landPath = buildPath(geo.land.norway);
-    swedenPath = buildPath([...(geo.land.sweden || []), ...(geo.land.denmark || [])]);
+    swedenPath = buildPath([
+      ...(geo.land.sweden  || []),
+      ...(geo.land.denmark || []),
+      ...(geo.land.finland || []),
+      ...(geo.land.russia  || []),
+    ]);
     lakePath = buildPath(geo.lakes || []);
     needsDraw = true;
   }

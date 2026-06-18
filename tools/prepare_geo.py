@@ -12,7 +12,7 @@ import math
 import sys
 
 # Southern Norway viewport (lon/lat) with margin
-BBOX = (3.8, 57.4, 14.2, 62.9)  # W, S, E, N
+BBOX = (3.8, 57.4, 31.5, 71.3)  # W, S, E, N — all Norway
 
 
 def clip_ring(ring, bbox):
@@ -121,7 +121,7 @@ def main(countries_path, lakes_path, out_path):
     land = {}
     for feat in countries["features"]:
         name = feat["properties"].get("ADMIN") or feat["properties"].get("admin")
-        if name in ("Norway", "Sweden", "Denmark"):
+        if name in ("Norway", "Sweden", "Denmark", "Finland", "Russia"):
             polys = process_polys(feat["geometry"], 0.004, 0.0006)
             if polys:
                 land[name.lower()] = polys
